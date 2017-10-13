@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="model"
+            type="com.fueled.loginbindings.LoginModel"/>
+
+        <variable
+            name="handler"
+            type="com.fueled.loginbindings.MainHandler"/>
+
+    </data>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@android:color/white"
+        android:fillViewport="true"
+        tools:context="com.fueled.loginbindings.MainActivity">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:padding="@dimen/space_large">
+
+            <EditText
+                android:id="@+id/username_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email"
+                android:imeOptions="actionNext"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@={model.email}"
+                android:textColor="@android:color/black"/>
+
+            <EditText
+                android:id="@+id/password_edit_text"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/password"
+                android:imeOptions="actionDone"
+                android:inputType="textPassword"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:text="@={model.password}"
+                android:textColor="@android:color/black"
+                app:onKeyDonePressed="@{() -> handler.onLoginClicked(model.email, model.password)}"/>
+
+            <Button
+                android:id="@+id/login_button"
+                style="@style/LoginButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/space_xlarge"
+                android:layout_marginTop="@dimen/space_xlarge"
+                android:enabled="@{model.loginEnabled}"
+                android:onClick="@{() -> handler.onLoginClicked(model.email, model.password)}"
+                android:text="@string/login"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</layout>
