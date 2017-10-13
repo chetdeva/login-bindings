@@ -50,10 +50,20 @@ public class LoginModel extends BaseObservable {
 		notifyPropertyChanged(BR.loginEnabled);
 	}
 
+	/**
+	 * checks if email and password fields are set
+	 *
+	 * @return
+	 */
 	private boolean isEmailAndPasswordSet() {
 		return !TextUtils.isEmpty(getEmail()) && !TextUtils.isEmpty(getPassword());
 	}
 
+	/**
+	 * checks if email is valid
+	 *
+	 * @return
+	 */
 	private boolean isValidEmail() {
 		return !getEmail().contains(" ") && getEmail().contains("@");   // replace with regex
 	}
