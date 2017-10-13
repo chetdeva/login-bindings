@@ -7,6 +7,5 @@ package com.fueled.loginbindings;
  */
 
 public interface MainHandler {
-
 	void onLoginClicked(String email, String password);
 }

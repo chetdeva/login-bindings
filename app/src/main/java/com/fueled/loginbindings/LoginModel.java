@@ -4,8 +4,6 @@ import android.databinding.BaseObservable;
 import android.databinding.Bindable;
 import android.text.TextUtils;
 
-import com.fueled.loginbindings.BR;
-
 /**
  * Copyright (c) 2017 Fueled. All rights reserved.
  *
@@ -26,7 +24,7 @@ public class LoginModel extends BaseObservable {
 	public void setEmail(String email) {
 		this.email = email;
 		notifyPropertyChanged(BR.email);
-		setLoginEnabled(isEmailAndPasswordSet() && isValidEmail());
+		setLoginEnabled(isEmailAndPasswordSet() && isEmailValid());
 	}
 
 	@Bindable
@@ -37,7 +35,7 @@ public class LoginModel extends BaseObservable {
 	public void setPassword(String password) {
 		this.password = password;
 		notifyPropertyChanged(BR.password);
-		setLoginEnabled(isEmailAndPasswordSet() && isValidEmail());
+		setLoginEnabled(isEmailAndPasswordSet() && isEmailValid());
 	}
 
 	@Bindable
@@ -53,7 +51,7 @@ public class LoginModel extends BaseObservable {
 	/**
 	 * checks if email and password fields are set
 	 *
-	 * @return
+	 * @return isEmailAndPasswordSet
 	 */
 	private boolean isEmailAndPasswordSet() {
 		return !TextUtils.isEmpty(getEmail()) && !TextUtils.isEmpty(getPassword());
@@ -62,9 +60,9 @@ public class LoginModel extends BaseObservable {
 	/**
 	 * checks if email is valid
 	 *
-	 * @return
+	 * @return isEmailValid
 	 */
-	private boolean isValidEmail() {
+	private boolean isEmailValid() {
 		return !getEmail().contains(" ") && getEmail().contains("@");   // replace with regex
 	}
 
