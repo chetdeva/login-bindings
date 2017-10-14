@@ -63,7 +63,8 @@ public class LoginModel extends BaseObservable {
 	 * @return isEmailValid
 	 */
 	private boolean isEmailValid() {
-		return !getEmail().contains(" ") && getEmail().contains("@");   // replace with regex
+//		return !getEmail().contains(" ") && getEmail().contains("@");
+		return true;
 	}
 
 }
