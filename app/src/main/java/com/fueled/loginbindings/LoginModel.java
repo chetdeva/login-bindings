@@ -24,7 +24,7 @@ public class LoginModel extends BaseObservable {
 	public void setEmail(String email) {
 		this.email = email;
 		notifyPropertyChanged(BR.email);
-		setLoginEnabled(isEmailAndPasswordSet() && isEmailValid());
+		setLoginEnabled(isEmailAndPasswordSet());
 	}
 
 	@Bindable
@@ -35,7 +35,7 @@ public class LoginModel extends BaseObservable {
 	public void setPassword(String password) {
 		this.password = password;
 		notifyPropertyChanged(BR.password);
-		setLoginEnabled(isEmailAndPasswordSet() && isEmailValid());
+		setLoginEnabled(isEmailAndPasswordSet());
 	}
 
 	@Bindable
@@ -55,16 +55,6 @@ public class LoginModel extends BaseObservable {
 	 */
 	private boolean isEmailAndPasswordSet() {
 		return !TextUtils.isEmpty(getEmail()) && !TextUtils.isEmpty(getPassword());
-	}
-
-	/**
-	 * checks if email is valid
-	 *
-	 * @return isEmailValid
-	 */
-	private boolean isEmailValid() {
-//		return !getEmail().contains(" ") && getEmail().contains("@");
-		return true;
 	}
 
 }
