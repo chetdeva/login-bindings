@@ -26,17 +26,46 @@ public class LoginModel extends BaseObservable {
 	private boolean loginEnabled;
 
 	@Bindable
-    public String getEmail() {
-        return email;
-    }
+	public String getEmail() {
+		return email;
+	}
 
-    public void setEmail(String email) {
-        this.email = email;
-        notifyPropertyChanged(BR.email);
-        setLoginEnabled(isEmailAndPasswordSet() && isEmailValid());
-    }
+	public void setEmail(String email) {
+		this.email = email;
+		notifyPropertyChanged(BR.email);
+		setLoginEnabled(isEmailAndPasswordSet());
+	}
 
-    // ... other bindings
+	@Bindable
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+		notifyPropertyChanged(BR.password);
+		setLoginEnabled(isEmailAndPasswordSet());
+	}
+
+	@Bindable
+	public boolean isLoginEnabled() {
+		return loginEnabled;
+	}
+
+	public void setLoginEnabled(boolean loginEnabled) {
+		this.loginEnabled = loginEnabled;
+		notifyPropertyChanged(BR.loginEnabled);
+	}
+
+	/**
+	 * checks if email and password fields are set
+	 *
+	 * @return isEmailAndPasswordSet
+	 */
+	private boolean isEmailAndPasswordSet() {
+		return !TextUtils.isEmpty(getEmail()) && !TextUtils.isEmpty(getPassword());
+	}
+}
 ```
 
 In your activity, bind the ViewModel with the view as follows:

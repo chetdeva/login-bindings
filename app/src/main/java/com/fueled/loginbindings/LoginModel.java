@@ -56,5 +56,4 @@ public class LoginModel extends BaseObservable {
 	private boolean isEmailAndPasswordSet() {
 		return !TextUtils.isEmpty(getEmail()) && !TextUtils.isEmpty(getPassword());
 	}
-
 }
