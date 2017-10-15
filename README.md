@@ -21,7 +21,6 @@ A ViewModel should extend BaseObservable for the mechanism to be reactive. Use `
 ```java
 public class LoginModel extends BaseObservable {
 
-	private String email;
     private String email;
     private String password;
     private boolean loginEnabled;
