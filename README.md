@@ -22,49 +22,50 @@ A ViewModel should extend BaseObservable for the mechanism to be reactive. Use `
 public class LoginModel extends BaseObservable {
 
 	private String email;
-	private String password;
-	private boolean loginEnabled;
+    private String email;
+    private String password;
+    private boolean loginEnabled;
 
-	@Bindable
-	public String getEmail() {
-		return email;
-	}
+    @Bindable
+    public String getEmail() {
+        return email;
+    }
 
-	public void setEmail(String email) {
-		this.email = email;
-		notifyPropertyChanged(BR.email);
-		setLoginEnabled(isEmailAndPasswordSet());
-	}
+    public void setEmail(String email) {
+        this.email = email;
+        notifyPropertyChanged(BR.email);
+        setLoginEnabled(isEmailAndPasswordSet());
+    }
 
-	@Bindable
-	public String getPassword() {
-		return password;
-	}
+    @Bindable
+    public String getPassword() {
+        return password;
+    }
 
-	public void setPassword(String password) {
-		this.password = password;
-		notifyPropertyChanged(BR.password);
-		setLoginEnabled(isEmailAndPasswordSet());
-	}
+    public void setPassword(String password) {
+        this.password = password;
+        notifyPropertyChanged(BR.password);
+        setLoginEnabled(isEmailAndPasswordSet());
+    }
 
-	@Bindable
-	public boolean isLoginEnabled() {
-		return loginEnabled;
-	}
+    @Bindable
+    public boolean isLoginEnabled() {
+        return loginEnabled;
+    }
 
-	public void setLoginEnabled(boolean loginEnabled) {
-		this.loginEnabled = loginEnabled;
-		notifyPropertyChanged(BR.loginEnabled);
-	}
+    public void setLoginEnabled(boolean loginEnabled) {
+        this.loginEnabled = loginEnabled;
+        notifyPropertyChanged(BR.loginEnabled);
+    }
 
-	/**
-	 * checks if email and password fields are set
-	 *
-	 * @return isEmailAndPasswordSet
-	 */
-	private boolean isEmailAndPasswordSet() {
-		return !TextUtils.isEmpty(getEmail()) && !TextUtils.isEmpty(getPassword());
-	}
+    /**
+     * checks if email and password fields are set
+     *
+     * @return isEmailAndPasswordSet
+     */
+    private boolean isEmailAndPasswordSet() {
+        return !TextUtils.isEmpty(getEmail()) && !TextUtils.isEmpty(getPassword());
+    }
 }
 ```
 
